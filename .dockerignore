@@ -1,0 +1,6 @@
+# Intentionally incomplete .dockerignore for demo purposes.
+# *.pem files (including the TLS private key) are NOT excluded, so they are
+# sent to the build daemon and then explicitly copied into the image layer,
+# making the private key readable from the registry. CWE-312.
+.git
+README.md
