@@ -1,7 +1,13 @@
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+
+# ── AI assistant instructions ─────────────────────────────────────────────────
+# CLAUDE.md contains operating instructions for AI assistants and must not be
+# committed — it may reference internal conventions, tooling details, or project
+# context that should not be public.
+CLAUDE.md
+
+# ── Go build artefacts ────────────────────────────────────────────────────────
 *.exe
 *.exe~
 *.dll
@@ -24,9 +30,27 @@ profile.cov
 go.work
 go.work.sum
 
-# env file
-.env
+# ── TLS certificates and private keys ─────────────────────────────────────────
+# Generated locally; never commit private key material.
+*.pem
+*.key
+*.crt
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+
+# ── Terraform ─────────────────────────────────────────────────────────────────
+# State files contain plaintext resource attributes including the service
+# account private key generated in terraform/iam.tf — never commit them.
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/*.tfplan
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8443:8443"
+    depends_on:
+      - db
+    # Credentials are repeated here as compose overrides, compounding the
+    # CWE-798 exposure already present in the Dockerfile ENV layer.
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin
+      DB_PASSWORD: admin123
+      API_KEY: sk-abc123secretkey9876
+      JWT_SECRET: secret
+    # No read_only, no cap_drop, no security_opt — full default privileges.
+
+  db:
+    # postgres:11-alpine: PostgreSQL 11 reached End-of-Life in November 2023.
+    # The Alpine base layer frequently ships with outdated musl libc and
+    # OpenSSL packages that Snyk Container flags as vulnerable.
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: appdb
+    ports:
+      # Database port exposed directly to the host — no network isolation.
+      # An attacker on the same host can reach Postgres without going through
+      # the application layer.
+      - "5432:5432"
+    # No volume defined — data is ephemeral, but the weak image is the point.

@@ -1,0 +1,68 @@
+steps:
+  # ── Step 1: Build the Docker image ──────────────────────────────────────────
+  # Uses the Dockerfile in the repo root, which is based on debian:stretch (EOL).
+  # No --no-cache flag: stale layer cache may preserve outdated vulnerable packages
+  # from a previous build, meaning a `apt-get upgrade` in the Dockerfile would
+  # pull from the build cache rather than the live Debian security mirror.
+  - name: "gcr.io/cloud-builders/docker"
+    id: build
+    args:
+      - "build"
+      - "-t"
+      - "${_REGION}-docker.pkg.dev/$PROJECT_ID/weak-go-app/${_IMAGE_NAME}:$COMMIT_SHA"
+      - "-t"
+      - "${_REGION}-docker.pkg.dev/$PROJECT_ID/weak-go-app/${_IMAGE_NAME}:latest"
+      - "."
+
+  # ── Step 2: Push both tags to Artifact Registry ──────────────────────────────
+  # The repository allows allUsers to pull (see artifact_registry.tf), so once
+  # pushed the image — and its baked-in credentials — are publicly accessible.
+  - name: "gcr.io/cloud-builders/docker"
+    id: push
+    args:
+      - "push"
+      - "--all-tags"
+      - "${_REGION}-docker.pkg.dev/$PROJECT_ID/weak-go-app/${_IMAGE_NAME}"
+
+  # ── Step 3: Deploy to Cloud Run ──────────────────────────────────────────────
+  # CWE-284 / Snyk: --allow-unauthenticated enables public invocation, matching
+  # the allUsers IAM binding in cloud_run.tf.
+  #
+  # CWE-312: --set-env-vars passes the substitution variable values (DB password,
+  # API key, JWT secret) as plaintext environment variables. These values appear
+  # in this step's build log, in Cloud Logging, and in the Cloud Run revision
+  # configuration — they are never encrypted at rest in this flow.
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: deploy
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "weak-go-app"
+      - "--image=${_REGION}-docker.pkg.dev/$PROJECT_ID/weak-go-app/${_IMAGE_NAME}:$COMMIT_SHA"
+      - "--region=${_REGION}"
+      - "--platform=managed"
+      - "--allow-unauthenticated"
+      - "--port=8443"
+      - "--set-env-vars=DB_PASSWORD=${_DB_PASSWORD},API_KEY=${_API_KEY},JWT_SECRET=${_JWT_SECRET}"
+      # Snyk policy: secrets passed via --set-env-vars appear in build logs.
+      # Use --set-secrets=VAR=projects/.../secrets/.../versions/latest instead.
+
+substitutions:
+  _REGION: us-central1
+  _IMAGE_NAME: weak-go-app
+  # The following substitution defaults mirror the values in cloud_build.tf.
+  # They are overridden by the trigger's substitutions block, but are
+  # documented here so developers can run manual triggers from the console —
+  # again exposing the credentials in the UI. CWE-798.
+  _DB_PASSWORD: admin123
+  _API_KEY: sk-abc123secretkey9876
+  _JWT_SECRET: secret
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  # No machineType specified — builds run on shared default N1 workers.
+  # Cloud Build private pools (workerPools) would isolate build traffic to
+  # a dedicated VPC; without one, build egress goes over the public internet
+  # and the build environment is shared infrastructure. Snyk policy-as-code
+  # rules flag the absence of a private pool for sensitive workloads.
