@@ -224,5 +224,13 @@ output.
 
 ## Licence
 
-See `LICENSE`. This software is provided for **educational and authorised
-testing purposes only**. The authors accept no liability for misuse.
+This project is released under the [MIT License](LICENSE). You are free to
+use, copy, modify, and distribute it for any purpose. The risks of doing so
+are yours to own.
+
+This repository contains code that is **deliberately and extensively
+insecure**. The warnings in this README constitute explicit, written notice
+of those risks. Anyone who deploys, adapts, or redistributes this code has
+been informed of its nature. The MIT License's "AS IS" warranty disclaimer
+applies in full — the authors accept no liability arising from any use of
+this software.
