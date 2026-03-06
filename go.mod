@@ -8,4 +8,5 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/tidwall/gjson v1.6.0
 	gopkg.in/yaml.v2 v2.2.2
+	github.com/gofiber/fiber/v3 v1.12.0
 )
