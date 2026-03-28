@@ -1,0 +1,915 @@
+{
+  "meta": {
+    "generatedFrom": "snyk-test.json",
+    "projectName": "weak-go-app",
+    "packageManager": "gomodules",
+    "targetFile": "go.mod",
+    "snykSummary": "15 vulnerable dependency paths",
+    "totalVulnerabilityRecords": 15,
+    "totalPackages": 32
+  },
+  "dependencyTree": {
+    "id": "weak-go-app@0.0.0",
+    "nodeId": "root-node",
+    "pruned": false,
+    "version": "0.0.0",
+    "vulnerable": false,
+    "dependencies": [
+      {
+        "id": "gopkg.in/yaml.v2@2.2.2",
+        "nodeId": "gopkg.in/yaml.v2",
+        "pruned": false,
+        "version": "2.2.2",
+        "vulnerable": true,
+        "severities": {
+          "HIGH": 1,
+          "MEDIUM": 2
+        },
+        "cves": [
+          {
+            "cve": "CVE-2019-11254",
+            "severity": "medium",
+            "title": "Denial of Service (DoS)",
+            "fixedIn": "2.2.8"
+          },
+          {
+            "cve": "CVE-2021-4235",
+            "severity": "medium",
+            "title": "Denial of Service (DoS)",
+            "fixedIn": "2.2.3"
+          },
+          {
+            "cve": "CVE-2022-3064",
+            "severity": "high",
+            "title": "Denial of Service (DoS)",
+            "fixedIn": "2.2.4"
+          }
+        ],
+        "remediation": {
+          "changeType": "POINT",
+          "targetVersion": "2.2.8",
+          "goModChange": "require gopkg.in/yaml.v2 v2.2.8",
+          "apiRisk": "none",
+          "notes": "",
+          "fixMilestones": [
+            {
+              "version": "2.2.3",
+              "cvesFixed": [
+                "CVE-2021-4235"
+              ]
+            },
+            {
+              "version": "2.2.4",
+              "cvesFixed": [
+                "CVE-2022-3064"
+              ]
+            },
+            {
+              "version": "2.2.8",
+              "cvesFixed": [
+                "CVE-2019-11254"
+              ]
+            }
+          ],
+          "pointAlternative": {
+            "targetVersion": "2.2.3",
+            "cvesFixed": 1,
+            "cvesRemaining": 2,
+            "remainingHighCount": 1,
+            "verdict": "insufficient — 1 HIGH CVE remain"
+          }
+        }
+      },
+      {
+        "id": "github.com/tidwall/gjson@1.6.0",
+        "nodeId": "github.com/tidwall/gjson",
+        "pruned": false,
+        "version": "1.6.0",
+        "vulnerable": true,
+        "severities": {
+          "HIGH": 3,
+          "MEDIUM": 2
+        },
+        "cves": [
+          {
+            "cve": "CVE-2020-35380",
+            "severity": "high",
+            "title": "Denial of Service (DoS)",
+            "fixedIn": "1.6.4"
+          },
+          {
+            "cve": "CVE-2020-36066",
+            "severity": "medium",
+            "title": "Regular Expression Denial of Service (ReDoS)",
+            "fixedIn": "1.6.5"
+          },
+          {
+            "cve": "CVE-2020-36067",
+            "severity": "medium",
+            "title": "Denial of Service (DoS)",
+            "fixedIn": "1.6.6"
+          },
+          {
+            "cve": "CVE-2021-42248",
+            "severity": "high",
+            "title": "Regular Expression Denial of Service (ReDoS)",
+            "fixedIn": "1.9.3"
+          },
+          {
+            "cve": "CVE-2021-42836",
+            "severity": "high",
+            "title": "Regular Expression Denial of Service (ReDoS)",
+            "fixedIn": "1.9.3"
+          }
+        ],
+        "remediation": {
+          "changeType": "STEP",
+          "targetVersion": "1.9.3",
+          "goModChange": "require github.com/tidwall/gjson v1.9.3",
+          "apiRisk": "low",
+          "notes": "",
+          "fixMilestones": [
+            {
+              "version": "1.6.4",
+              "cvesFixed": [
+                "CVE-2020-35380"
+              ]
+            },
+            {
+              "version": "1.6.5",
+              "cvesFixed": [
+                "CVE-2020-36066"
+              ]
+            },
+            {
+              "version": "1.6.6",
+              "cvesFixed": [
+                "CVE-2020-36067"
+              ]
+            },
+            {
+              "version": "1.9.3",
+              "cvesFixed": [
+                "CVE-2021-42248",
+                "CVE-2021-42836"
+              ]
+            }
+          ],
+          "pointAlternative": {
+            "targetVersion": "1.6.4",
+            "cvesFixed": 1,
+            "cvesRemaining": 4,
+            "remainingHighCount": 2,
+            "verdict": "insufficient — 2 HIGH CVEs remain"
+          }
+        },
+        "dependencies": [
+          {
+            "id": "github.com/tidwall/pretty@1.0.0",
+            "nodeId": "github.com/tidwall/pretty",
+            "pruned": false,
+            "version": "1.0.0",
+            "vulnerable": false
+          },
+          {
+            "id": "github.com/tidwall/match@1.0.1",
+            "nodeId": "github.com/tidwall/match",
+            "pruned": false,
+            "version": "1.0.1",
+            "vulnerable": true,
+            "severities": {
+              "HIGH": 1,
+              "MEDIUM": 0
+            },
+            "cves": [
+              {
+                "cve": "CVE-2020-36066",
+                "severity": "high",
+                "title": "Denial of Service (DoS)",
+                "fixedIn": "1.0.3"
+              }
+            ],
+            "remediation": {
+              "changeType": "POINT",
+              "targetVersion": "1.0.3",
+              "goModChange": "// auto-resolved — upgrading github.com/tidwall/gjson pulls a fixed github.com/tidwall/match",
+              "apiRisk": "none",
+              "notes": "Resolved automatically by upgrading github.com/tidwall/gjson. No separate go.mod entry required.",
+              "fixMilestones": [
+                {
+                  "version": "1.0.3",
+                  "cvesFixed": [
+                    "CVE-2020-36066"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "github.com/dgrijalva/jwt-go@3.2.0",
+        "nodeId": "github.com/dgrijalva/jwt-go",
+        "pruned": false,
+        "version": "3.2.0",
+        "vulnerable": true,
+        "severities": {
+          "HIGH": 1,
+          "MEDIUM": 0
+        },
+        "cves": [
+          {
+            "cve": "CVE-2020-26160",
+            "severity": "high",
+            "title": "Access Restriction Bypass",
+            "fixedIn": "4.0.0-preview1"
+          }
+        ],
+        "remediation": {
+          "changeType": "REPLACE",
+          "goModChange": "require github.com/golang-jwt/jwt/v5 v5.2.1",
+          "apiRisk": "medium",
+          "notes": "Package abandoned. fixedIn=4.0.0-preview1 is a dead-end pre-release. No safe upgrade within dgrijalva/jwt-go.",
+          "fixMilestones": [
+            {
+              "version": "4.0.0-preview1",
+              "cvesFixed": [
+                "CVE-2020-26160"
+              ]
+            }
+          ],
+          "options": {
+            "optionA_repackage": {
+              "strategy": "go.mod replace directive pointing to local fork",
+              "goModChange": "replace github.com/dgrijalva/jwt-go =\u003e ./local/jwt-go",
+              "codeChanges": [
+                "none — import paths unchanged"
+              ],
+              "pro": "zero import-path changes in handlers/jwt.go",
+              "con": "team owns ongoing security maintenance of private fork"
+            },
+            "optionB_swap": {
+              "strategy": "swap to golang-jwt/jwt/v5 (community successor)",
+              "goModChange": "require github.com/golang-jwt/jwt/v5 v5.2.1",
+              "codeChanges": [
+                "handlers/jwt.go: update import path",
+                "handlers/jwt.go: ParseWithClaims gains Options arg — minor update"
+              ],
+              "pro": "actively maintained; CVE-2020-26160 closed; alg-pinning built-in",
+              "con": "requires code change at import + 1-2 call sites",
+              "recommendation": true
+            }
+          }
+        }
+      },
+      {
+        "id": "github.com/antchfx/xmlquery@1.3.18",
+        "nodeId": "github.com/antchfx/xmlquery",
+        "pruned": false,
+        "version": "1.3.18",
+        "vulnerable": false,
+        "dependencies": [
+          {
+            "id": "golang.org/x/net/html/charset@0.7.0",
+            "nodeId": "golang.org/x/net/html/charset",
+            "pruned": false,
+            "version": "0.7.0",
+            "vulnerable": false,
+            "dependencies": [
+              {
+                "id": "golang.org/x/text/transform@0.7.0",
+                "nodeId": "golang.org/x/text/transform",
+                "pruned": false,
+                "version": "0.7.0",
+                "vulnerable": false
+              },
+              {
+                "id": "golang.org/x/text/encoding/htmlindex@0.7.0",
+                "nodeId": "golang.org/x/text/encoding/htmlindex",
+                "pruned": false,
+                "version": "0.7.0",
+                "vulnerable": false,
+                "dependencies": [
+                  {
+                    "id": "golang.org/x/text/language@0.7.0",
+                    "nodeId": "golang.org/x/text/language",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/internal/language/compact@0.7.0",
+                        "nodeId": "golang.org/x/text/internal/language/compact",
+                        "pruned": false,
+                        "version": "0.7.0",
+                        "vulnerable": false,
+                        "dependencies": [
+                          {
+                            "id": "golang.org/x/text/internal/language@0.7.0",
+                            "nodeId": "golang.org/x/text/internal/language",
+                            "pruned": false,
+                            "version": "0.7.0",
+                            "vulnerable": false,
+                            "dependencies": [
+                              {
+                                "id": "golang.org/x/text/internal/tag@0.7.0",
+                                "nodeId": "golang.org/x/text/internal/tag",
+                                "pruned": false,
+                                "version": "0.7.0",
+                                "vulnerable": false
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "golang.org/x/text/internal/language@0.7.0",
+                        "nodeId": "golang.org/x/text/internal/language:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/unicode@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/unicode",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/runes@0.7.0",
+                        "nodeId": "golang.org/x/text/runes",
+                        "pruned": false,
+                        "version": "0.7.0",
+                        "vulnerable": false,
+                        "dependencies": [
+                          {
+                            "id": "golang.org/x/text/transform@0.7.0",
+                            "nodeId": "golang.org/x/text/transform:pruned",
+                            "pruned": true,
+                            "version": "0.7.0",
+                            "vulnerable": false
+                          }
+                        ]
+                      },
+                      {
+                        "id": "golang.org/x/text/internal/utf8internal@0.7.0",
+                        "nodeId": "golang.org/x/text/internal/utf8internal",
+                        "pruned": false,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier",
+                        "pruned": false,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal",
+                        "pruned": false,
+                        "version": "0.7.0",
+                        "vulnerable": false,
+                        "dependencies": [
+                          {
+                            "id": "golang.org/x/text/transform@0.7.0",
+                            "nodeId": "golang.org/x/text/transform:pruned",
+                            "pruned": true,
+                            "version": "0.7.0",
+                            "vulnerable": false
+                          },
+                          {
+                            "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                            "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                            "pruned": true,
+                            "version": "0.7.0",
+                            "vulnerable": false
+                          },
+                          {
+                            "id": "golang.org/x/text/encoding@0.7.0",
+                            "nodeId": "golang.org/x/text/encoding",
+                            "pruned": false,
+                            "version": "0.7.0",
+                            "vulnerable": false,
+                            "dependencies": [
+                              {
+                                "id": "golang.org/x/text/transform@0.7.0",
+                                "nodeId": "golang.org/x/text/transform:pruned",
+                                "pruned": true,
+                                "version": "0.7.0",
+                                "vulnerable": false
+                              },
+                              {
+                                "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                                "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                                "pruned": true,
+                                "version": "0.7.0",
+                                "vulnerable": false
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/traditionalchinese@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/traditionalchinese",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/simplifiedchinese@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/simplifiedchinese",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/korean@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/korean",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/japanese@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/japanese",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                    "pruned": true,
+                    "version": "0.7.0",
+                    "vulnerable": false
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding/charmap@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding/charmap",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false,
+                    "dependencies": [
+                      {
+                        "id": "golang.org/x/text/transform@0.7.0",
+                        "nodeId": "golang.org/x/text/transform:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal/identifier@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal/identifier:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding/internal@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding/internal:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      },
+                      {
+                        "id": "golang.org/x/text/encoding@0.7.0",
+                        "nodeId": "golang.org/x/text/encoding:pruned",
+                        "pruned": true,
+                        "version": "0.7.0",
+                        "vulnerable": false
+                      }
+                    ]
+                  },
+                  {
+                    "id": "golang.org/x/text/encoding@0.7.0",
+                    "nodeId": "golang.org/x/text/encoding:pruned",
+                    "pruned": true,
+                    "version": "0.7.0",
+                    "vulnerable": false
+                  }
+                ]
+              },
+              {
+                "id": "golang.org/x/text/encoding/charmap@0.7.0",
+                "nodeId": "golang.org/x/text/encoding/charmap:pruned",
+                "pruned": true,
+                "version": "0.7.0",
+                "vulnerable": false
+              },
+              {
+                "id": "golang.org/x/text/encoding@0.7.0",
+                "nodeId": "golang.org/x/text/encoding:pruned",
+                "pruned": true,
+                "version": "0.7.0",
+                "vulnerable": false
+              },
+              {
+                "id": "golang.org/x/net/html@0.7.0",
+                "nodeId": "golang.org/x/net/html",
+                "pruned": false,
+                "version": "0.7.0",
+                "vulnerable": true,
+                "severities": {
+                  "HIGH": 1,
+                  "MEDIUM": 4
+                },
+                "cves": [
+                  {
+                    "cve": "CVE-2025-47911",
+                    "severity": "medium",
+                    "title": "Inefficient Algorithmic Complexity",
+                    "fixedIn": "0.45.0"
+                  },
+                  {
+                    "cve": "CVE-2025-58190",
+                    "severity": "medium",
+                    "title": "Infinite loop",
+                    "fixedIn": "0.45.0"
+                  },
+                  {
+                    "cve": "CVE-2023-3978",
+                    "severity": "medium",
+                    "title": "Cross-site Scripting (XSS)",
+                    "fixedIn": "0.13.0"
+                  },
+                  {
+                    "cve": "CVE-2024-45338",
+                    "severity": "high",
+                    "title": "Denial of Service (DoS)",
+                    "fixedIn": "0.33.0"
+                  },
+                  {
+                    "cve": "CVE-2025-22872",
+                    "severity": "medium",
+                    "title": "Improper Validation of Syntactic Correctness of Input",
+                    "fixedIn": "0.38.0"
+                  }
+                ],
+                "remediation": {
+                  "changeType": "STEP",
+                  "targetVersion": "0.45.0",
+                  "goModChange": "require golang.org/x/net v0.45.0  // override transitive dep",
+                  "apiRisk": "low",
+                  "notes": "Indirect dep. go.mod override is valid if upstream pins no upper bound on golang.org/x/net.",
+                  "fixMilestones": [
+                    {
+                      "version": "0.13.0",
+                      "cvesFixed": [
+                        "CVE-2023-3978"
+                      ]
+                    },
+                    {
+                      "version": "0.33.0",
+                      "cvesFixed": [
+                        "CVE-2024-45338"
+                      ]
+                    },
+                    {
+                      "version": "0.38.0",
+                      "cvesFixed": [
+                        "CVE-2025-22872"
+                      ]
+                    },
+                    {
+                      "version": "0.45.0",
+                      "cvesFixed": [
+                        "CVE-2025-47911",
+                        "CVE-2025-58190"
+                      ]
+                    }
+                  ],
+                  "pointAlternative": {
+                    "targetVersion": "0.13.0",
+                    "cvesFixed": 1,
+                    "cvesRemaining": 4,
+                    "remainingHighCount": 1,
+                    "verdict": "insufficient — 1 HIGH CVE remain"
+                  }
+                },
+                "dependencies": [
+                  {
+                    "id": "golang.org/x/net/html/atom@0.7.0",
+                    "nodeId": "golang.org/x/net/html/atom",
+                    "pruned": false,
+                    "version": "0.7.0",
+                    "vulnerable": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "github.com/golang/groupcache/lru@#41bb18bfe9da",
+            "nodeId": "github.com/golang/groupcache/lru",
+            "pruned": false,
+            "version": "#41bb18bfe9da",
+            "vulnerable": false
+          },
+          {
+            "id": "github.com/antchfx/xpath@1.2.4",
+            "nodeId": "github.com/antchfx/xpath",
+            "pruned": false,
+            "version": "1.2.4",
+            "vulnerable": false
+          }
+        ]
+      },
+      {
+        "id": "github.com/lib/pq@1.10.9",
+        "nodeId": "github.com/lib/pq",
+        "pruned": false,
+        "version": "1.10.9",
+        "vulnerable": false,
+        "dependencies": [
+          {
+            "id": "github.com/lib/pq/scram@1.10.9",
+            "nodeId": "github.com/lib/pq/scram",
+            "pruned": false,
+            "version": "1.10.9",
+            "vulnerable": false
+          },
+          {
+            "id": "github.com/lib/pq/oid@1.10.9",
+            "nodeId": "github.com/lib/pq/oid",
+            "pruned": false,
+            "version": "1.10.9",
+            "vulnerable": false
+          }
+        ]
+      }
+    ]
+  },
+  "upgradeEfficiencyMatrix": [
+    {
+      "package": "gopkg.in/yaml.v2",
+      "from": "2.2.2",
+      "to": "2.2.3",
+      "changeType": "POINT",
+      "goModTouches": 1,
+      "cvesClosedTotal": 1,
+      "highClosed": 0,
+      "mediumClosed": 1,
+      "cvesRemaining": 2,
+      "verdict": "insufficient — 2 1 HIGH CVEs remain, requires second touch later"
+    },
+    {
+      "package": "gopkg.in/yaml.v2",
+      "from": "2.2.2",
+      "to": "2.2.8",
+      "changeType": "POINT",
+      "goModTouches": 1,
+      "cvesClosedTotal": 3,
+      "highClosed": 1,
+      "mediumClosed": 2,
+      "cvesRemaining": 0,
+      "verdict": "optimal"
+    },
+    {
+      "package": "github.com/tidwall/gjson",
+      "from": "1.6.0",
+      "to": "1.6.4",
+      "changeType": "POINT",
+      "goModTouches": 1,
+      "cvesClosedTotal": 1,
+      "highClosed": 1,
+      "mediumClosed": 0,
+      "cvesRemaining": 4,
+      "verdict": "insufficient — 4 2 HIGH CVEs remain, requires second touch later"
+    },
+    {
+      "package": "github.com/tidwall/gjson",
+      "from": "1.6.0",
+      "to": "1.9.3",
+      "changeType": "STEP",
+      "goModTouches": 1,
+      "cvesClosedTotal": 5,
+      "highClosed": 3,
+      "mediumClosed": 2,
+      "cvesRemaining": 0,
+      "verdict": "optimal"
+    },
+    {
+      "package": "github.com/tidwall/match",
+      "from": "1.0.1",
+      "to": "1.0.3",
+      "changeType": "POINT",
+      "goModTouches": 1,
+      "cvesClosedTotal": 1,
+      "highClosed": 1,
+      "mediumClosed": 0,
+      "cvesRemaining": 0,
+      "verdict": "optimal"
+    },
+    {
+      "package": "github.com/dgrijalva/jwt-go",
+      "from": "3.2.0",
+      "to": "v5.2.1",
+      "changeType": "REPLACE",
+      "goModTouches": 1,
+      "codeChanges": 1,
+      "cvesClosedTotal": 1,
+      "highClosed": 1,
+      "mediumClosed": 0,
+      "cvesRemaining": 0,
+      "verdict": "optimal"
+    },
+    {
+      "package": "golang.org/x/net/html",
+      "from": "0.7.0",
+      "to": "0.13.0",
+      "changeType": "POINT",
+      "goModTouches": 1,
+      "cvesClosedTotal": 1,
+      "highClosed": 0,
+      "mediumClosed": 1,
+      "cvesRemaining": 4,
+      "verdict": "insufficient — 4 1 HIGH CVEs remain, requires second touch later"
+    },
+    {
+      "package": "golang.org/x/net/html",
+      "from": "0.7.0",
+      "to": "0.45.0",
+      "changeType": "STEP",
+      "goModTouches": 1,
+      "cvesClosedTotal": 5,
+      "highClosed": 1,
+      "mediumClosed": 4,
+      "cvesRemaining": 0,
+      "verdict": "optimal"
+    }
+  ],
+  "recommendedGoModDiff": {
+    "description": "Minimal go.mod changes to close all vulnerability records",
+    "changes": [
+      {
+        "action": "replace",
+        "remove": "github.com/dgrijalva/jwt-go v3.2.0",
+        "add": "github.com/golang-jwt/jwt/v5 v5.2.1",
+        "codeChangeRequired": true,
+        "files": [
+          "handlers/jwt.go"
+        ]
+      },
+      {
+        "action": "upgrade",
+        "remove": "github.com/tidwall/gjson v1.6.0",
+        "add": "require github.com/tidwall/gjson v1.9.3",
+        "codeChangeRequired": false
+      },
+      {
+        "action": "upgrade",
+        "remove": "gopkg.in/yaml.v2 v2.2.2",
+        "add": "require gopkg.in/yaml.v2 v2.2.8",
+        "codeChangeRequired": false
+      },
+      {
+        "action": "add_override",
+        "add": "require golang.org/x/net v0.45.0  // override transitive dep",
+        "note": "Indirect dep. go.mod override is valid if upstream pins no upper bound on golang.org/x/net.",
+        "codeChangeRequired": false
+      }
+    ]
+  }
+}

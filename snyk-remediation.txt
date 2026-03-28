@@ -1,0 +1,182 @@
+================================================================================
+  SNYK REMEDIATION REPORT — weak-go-app
+  gomodules · go.mod
+  15 vulnerable dependency paths
+  15 vulnerability records · 32 packages
+================================================================================
+
+DEPENDENCY TREE
+--------------------------------------------------------------------------------
+
+  Legend:  [H] HIGH   [M] MEDIUM   ✓ clean   ⚡ POINT   ⬆ STEP   ⇄ REPLACE
+           H×n / M×n = vulnerability count   →  = target fix version
+
+weak-go-app@0.0.0  ✓
+├── gopkg.in/yaml.v2@2.2.2  H×1 M×2  ⚡ POINT  →  2.2.8
+│   │  [M] CVE-2019-11254          fixedIn: 2.2.8              Denial of Service (DoS)
+│   │  [M] CVE-2021-4235           fixedIn: 2.2.3              Denial of Service (DoS)
+│   │  [H] CVE-2022-3064           fixedIn: 2.2.4              Denial of Service (DoS)
+│   │  
+│   │    Fix milestones:
+│   │      ▶ 2.2.3                  CVE-2021-4235
+│   │      ▶ 2.2.4                  CVE-2022-3064
+│   │      ▶ 2.2.8                  CVE-2019-11254 ◀ TARGET
+│   │  
+│   │    ⚠ Point alt 2.2.3: 1/3 CVEs — insufficient — 1 HIGH CVE remain
+│   │  
+│   │    go.mod: require gopkg.in/yaml.v2 v2.2.8
+│   │  
+├── github.com/tidwall/gjson@1.6.0  H×3 M×2  ⬆ STEP  →  1.9.3
+│   │  [H] CVE-2020-35380          fixedIn: 1.6.4              Denial of Service (DoS)
+│   │  [M] CVE-2020-36066          fixedIn: 1.6.5              Regular Expression Denial of Service (ReDoS)
+│   │  [M] CVE-2020-36067          fixedIn: 1.6.6              Denial of Service (DoS)
+│   │  [H] CVE-2021-42248          fixedIn: 1.9.3              Regular Expression Denial of Service (ReDoS)
+│   │  [H] CVE-2021-42836          fixedIn: 1.9.3              Regular Expression Denial of Service (ReDoS)
+│   │  
+│   │    Fix milestones:
+│   │      ▶ 1.6.4                  CVE-2020-35380
+│   │      ▶ 1.6.5                  CVE-2020-36066
+│   │      ▶ 1.6.6                  CVE-2020-36067
+│   │      ▶ 1.9.3                  CVE-2021-42248, CVE-2021-42836 ◀ TARGET
+│   │  
+│   │    ⚠ Point alt 1.6.4: 1/5 CVEs — insufficient — 2 HIGH CVEs remain
+│   │  
+│   │    go.mod: require github.com/tidwall/gjson v1.9.3
+│   │  
+│   ├── github.com/tidwall/pretty@1.0.0  ✓
+│   └── github.com/tidwall/match@1.0.1  H×1  ⚡ POINT  →  1.0.3
+│       │  [H] CVE-2020-36066          fixedIn: 1.0.3              Denial of Service (DoS)
+│       │  
+│       │    Fix milestones:
+│       │      ▶ 1.0.3                  CVE-2020-36066 ◀ TARGET
+│       │  
+│       │    go.mod: // auto-resolved — upgrading github.com/tidwall/gjson pulls a fixed github.com/tidwall/match
+│       │  
+├── github.com/dgrijalva/jwt-go@3.2.0  H×1  ⇄ REPLACE  →  REPLACE
+│   │  [H] CVE-2020-26160          fixedIn: 4.0.0-preview1     Access Restriction Bypass
+│   │  
+│   │    Fix milestones:
+│   │      ▶ 4.0.0-preview1         CVE-2020-26160
+│   │  
+│   │    go.mod: require github.com/golang-jwt/jwt/v5 v5.2.1
+│   │  
+│   │    Options:
+│   │      OPTIONA REPACKAGE
+│   │        + zero import-path changes in handlers/jwt.go
+│   │        - team owns ongoing security maintenance of private fork
+│   │      OPTIONB SWAP  ★ RECOMMENDED
+│   │        + actively maintained; CVE-2020-26160 closed; alg-pinning built-in
+│   │        - requires code change at import + 1-2 call sites
+│   │  
+├── github.com/antchfx/xmlquery@1.3.18  ✓
+│   ├── golang.org/x/net/html/charset@0.7.0  ✓
+│   │   ├── golang.org/x/text/transform@0.7.0  ✓
+│   │   ├── golang.org/x/text/encoding/htmlindex@0.7.0  ✓
+│   │   │   ├── golang.org/x/text/language@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/internal/language/compact@0.7.0  ✓
+│   │   │   │   │   └── golang.org/x/text/internal/language@0.7.0  ✓
+│   │   │   │   │       └── golang.org/x/text/internal/tag@0.7.0  ✓
+│   │   │   │   └── golang.org/x/text/internal/language@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/unicode@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/runes@0.7.0  ✓
+│   │   │   │   │   └── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/internal/utf8internal@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  ✓
+│   │   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   │   └── golang.org/x/text/encoding@0.7.0  ✓
+│   │   │   │   │       ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   │       └── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/traditionalchinese@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/simplifiedchinese@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/korean@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/japanese@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   ├── golang.org/x/text/encoding/charmap@0.7.0  ✓
+│   │   │   │   ├── golang.org/x/text/transform@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal/identifier@0.7.0  [pruned]
+│   │   │   │   ├── golang.org/x/text/encoding/internal@0.7.0  [pruned]
+│   │   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   │   └── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   ├── golang.org/x/text/encoding/charmap@0.7.0  [pruned]
+│   │   ├── golang.org/x/text/encoding@0.7.0  [pruned]
+│   │   └── golang.org/x/net/html@0.7.0  H×1 M×4  ⬆ STEP  →  0.45.0
+│   │       │  [M] CVE-2025-47911          fixedIn: 0.45.0             Inefficient Algorithmic Complexity
+│   │       │  [M] CVE-2025-58190          fixedIn: 0.45.0             Infinite loop
+│   │       │  [M] CVE-2023-3978           fixedIn: 0.13.0             Cross-site Scripting (XSS)
+│   │       │  [H] CVE-2024-45338          fixedIn: 0.33.0             Denial of Service (DoS)
+│   │       │  [M] CVE-2025-22872          fixedIn: 0.38.0             Improper Validation of Syntactic Correctness of Input
+│   │       │  
+│   │       │    Fix milestones:
+│   │       │      ▶ 0.13.0                 CVE-2023-3978
+│   │       │      ▶ 0.33.0                 CVE-2024-45338
+│   │       │      ▶ 0.38.0                 CVE-2025-22872
+│   │       │      ▶ 0.45.0                 CVE-2025-47911, CVE-2025-58190 ◀ TARGET
+│   │       │  
+│   │       │    ⚠ Point alt 0.13.0: 1/5 CVEs — insufficient — 1 HIGH CVE remain
+│   │       │  
+│   │       │    go.mod: require golang.org/x/net v0.45.0  // override transitive dep
+│   │       │  
+│   │       └── golang.org/x/net/html/atom@0.7.0  ✓
+│   ├── github.com/golang/groupcache/lru@#41bb18bfe9da  ✓
+│   └── github.com/antchfx/xpath@1.2.4  ✓
+└── github.com/lib/pq@1.10.9  ✓
+    ├── github.com/lib/pq/scram@1.10.9  ✓
+    └── github.com/lib/pq/oid@1.10.9  ✓
+
+
+UPGRADE EFFICIENCY MATRIX
+--------------------------------------------------------------------------------
+
+  Package                              Type       From     To                          Closed  Remain  Verdict
+  ------------------------------------ ---------- -------- -------------------------- ------- -------  ------------------------------
+  yaml.v2                              ⚡ POINT    2.2.2    2.2.3                      H×0 M×1       2  ⚠ insufficient 
+  yaml.v2                              ⚡ POINT    2.2.2    2.2.8                      H×1 M×2       0  ✓ optimal
+  gjson                                ⚡ POINT    1.6.0    1.6.4                      H×1 M×0       4  ⚠ insufficient 
+  gjson                                ⬆ STEP     1.6.0    1.9.3                      H×3 M×2       0  ✓ optimal
+  match                                ⚡ POINT    1.0.1    1.0.3                      H×1 M×0       0  ✓ optimal
+  jwt-go                               ⇄ REPLACE  3.2.0    v5.2.1                     H×1 M×0       0  ✓ optimal
+  html                                 ⚡ POINT    0.7.0    0.13.0                     H×0 M×1       4  ⚠ insufficient 
+  html                                 ⬆ STEP     0.7.0    0.45.0                     H×1 M×4       0  ✓ optimal
+
+
+RECOMMENDED go.mod CHANGES  (closes all vulnerability records)
+--------------------------------------------------------------------------------
+
+  [REPLACE]
+    - github.com/dgrijalva/jwt-go v3.2.0
+    + github.com/golang-jwt/jwt/v5 v5.2.1
+      // ⚠  code change required: handlers/jwt.go
+
+  [UPGRADE]
+    - github.com/tidwall/gjson v1.6.0
+    + require github.com/tidwall/gjson v1.9.3
+
+  [UPGRADE]
+    - gopkg.in/yaml.v2 v2.2.2
+    + require gopkg.in/yaml.v2 v2.2.8
+
+  [ADD OVERRIDE]
+    + require golang.org/x/net v0.45.0  // override transitive dep
+      // Indirect dep. go.mod override is valid if upstream pins no upper bound on golang.org/x/net.
+
+================================================================================
